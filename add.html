@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ゆうりんのやるべきTODOリスト</title>
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <link rel="stylesheet" href="css/sample.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>ゆうりんのやるべきTODOリスト</h1>
+        <div class="input-container">
+          <input type="text" id="title" placeholder="見出しを入力">
+          <textarea id="memo" placeholder="ここにメモを入力してください"></textarea>
+        </div>
+        <div class="memo-display" id="memoDisplay"></div>
+        <button onclick="saveMemo()">保存</button>
+        <button onclick="clearMemo()">クリア</button>
+        <div class="memo-list" id="memoList"></div>
+      </div>
+
+<script>
+const titleInput = document.getElementById("title");
+const memoInput = document.getElementById("memo");
+const memoList = document.getElementById("memoList");
+
+// メモの保存
+function saveMemo() {
+  const title = titleInput.value.trim();
+  const memo = memoInput.value.trim();
+  if (title === '' || memo === '') {
+    alert('見出しとメモの内容を入力してください。');
+    return;
+
+  // テキストをローカルストレージに保存
+  save.addEventListener("memo", () => {
+      localStorage.setItem("memo", memo.value); 
+    });
+
+ displayMemos();
+    document.getElementById("memoInput").value = "";
+  }
+  
+
+  const memoItem = document.createElement('div');
+  memoItem.textContent = title;
+  memoItem.addEventListener('click', () => toggleMemoDisplay(memo));
+  memoList.appendChild(memoItem);
+  titleInput.value = '';
+  memoInput.value = '';
+}
+
+// メモの表示・非表示切り替え
+function toggleMemoDisplay(memo) {
+  const memoDisplay = document.getElementById('memoDisplay');
+  if (memoDisplay.textContent === memo) {
+    memoDisplay.textContent = '';
+  } else {
+    memoDisplay.textContent = memo;
+  }
+}
+  // テキストをローカルストレージに保存
+  save.addEventListener("memoDisplay", () => {
+      localStorage.setItem("memoDisplay", memo.value); 
+    });
+
+// メモのクリア
+function clearMemo() {
+localStorage.removeItem("memos");
+  memoList.innerHTML = '';
+}
+
+</script>
+
+</body>
+</html>
